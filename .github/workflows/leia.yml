@@ -37,7 +37,7 @@ jobs:
         shell: pwsh
 
       - name: get provision
-        run: azd env refresh
+        run: azd env refresh --no-prompt
         env:
           AZURE_ENV_NAME: ${{ vars.AZURE_ENV_NAME }}
           AZURE_LOCATION: ${{ vars.AZURE_LOCATION }}
