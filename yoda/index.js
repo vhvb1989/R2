@@ -13,7 +13,7 @@ app.use(
 );
 
 app.get("/events", async (req, res) => {
-    res.status(200).json({ items: "hello" });
+    res.status(200).json({ items: "hello www" });
 });
 
 module.exports = app;
