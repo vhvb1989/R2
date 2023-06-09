@@ -1,12 +1,12 @@
-name: Update Yoda
+name: Update the force
 
 on:
   push:
     branches:
       - main
     paths:
-      - "yoda/**"
-      - ".github/workflows/yoda.yml"
+      - "the-force/**"
+      - ".github/workflows/the-force.yml"
   workflow_dispatch:
 
 permissions:
@@ -36,15 +36,8 @@ jobs:
             --tenant-id "$Env:AZURE_TENANT_ID"
         shell: pwsh
 
-      - name: get provision
-        run: azd env refresh
-        env:
-          AZURE_ENV_NAME: ${{ vars.AZURE_ENV_NAME }}
-          AZURE_LOCATION: ${{ vars.AZURE_LOCATION }}
-          AZURE_SUBSCRIPTION_ID: ${{ vars.AZURE_SUBSCRIPTION_ID }}
-
-      - name: Deploy Application
-        run: azd deploy yoda --no-prompt
+      - name: provision
+        run: azd provision --no-prompt
         env:
           AZURE_ENV_NAME: ${{ vars.AZURE_ENV_NAME }}
           AZURE_LOCATION: ${{ vars.AZURE_LOCATION }}

@@ -8,9 +8,9 @@ param applicationInsightsName string = ''
 param appServicePlanId string
 param appSettings object = {}
 param keyVaultName string
-param serviceName string = 'yoda'
+param serviceName string = 'padme'
 
-module yoda '../core/host/appservice.bicep' = {
+module padme '../core/host/appservice.bicep' = {
   name: '${name}-app-module'
   params: {
     name: name
@@ -28,6 +28,6 @@ module yoda '../core/host/appservice.bicep' = {
   }
 }
 
-output SERVICE_API_IDENTITY_PRINCIPAL_ID string = yoda.outputs.identityPrincipalId
-output SERVICE_API_NAME string = yoda.outputs.name
-output SERVICE_API_URI string = yoda.outputs.uri
+output SERVICE_API_IDENTITY_PRINCIPAL_ID string = padme.outputs.identityPrincipalId
+output SERVICE_API_NAME string = padme.outputs.name
+output SERVICE_API_URI string = padme.outputs.uri

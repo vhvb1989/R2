@@ -8,7 +8,7 @@ module cosmos '../core/database/cosmos/mongo/cosmos-mongo-db.bicep' = {
   name: 'cosmos-mongo'
   params: {
     accountName: accountName
-    databaseName: 'Nabu'
+    databaseName: 'Naboo'
     location: location
     keyVaultName: keyVaultName
     tags: tags
