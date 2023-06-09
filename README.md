@@ -1,3 +1,5 @@
+# R2
+
 R2 is a service that pulls events from different sources and use each event as context to start a GTP-4 chat. Once the chat is created, it ask GTP-4 to produce relevant and useful content about the event and produces a collection of ai-created-feeds.
 
 Example: Considering a simple event-source like a calendar, R2 can set up a client-connection for a calendar like outlook/gmail/facebook/etc. Then R2 pulls all the events from the calendar for the next 7 days. Each event is parsed to get a datetime, title, subject and description and used to call OpenAI to create a new /chat. Then, R2 would use a list of common instructions/questions like `how can I make this event better`, or `historical events about the event date`, or etc. All these instructions/queries should be configurable per user.
@@ -26,3 +28,7 @@ o	Backend services
 o	Frontend services
 	Static web app client
 
+# Build and deploy
+
+R2 uses the Azure Developer CLI to created all the required cloud services and to deploy the code on them.
+Run `azd up` from the root of the repo. That's all.

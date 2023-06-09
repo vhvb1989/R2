@@ -1,0 +1,29 @@
+{
+  "name": "yoda",
+  "version": "1.0.0",
+  "description": "event source keeper and events provider",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vhvb1989/R2.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/vhvb1989/R2/issues"
+  },
+  "homepage": "https://github.com/vhvb1989/R2#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "mongoose": "^7.2.2",
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.12"
+}
+}
