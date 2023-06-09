@@ -18,6 +18,8 @@
   },
   "homepage": "https://github.com/vhvb1989/R2#readme",
   "dependencies": {
+    "@azure/identity": "^3.2.2",
+    "@azure/keyvault-secrets": "^4.7.0",
     "cors": "^2.8.5",
     "express": "^4.18.2",
     "mongoose": "^7.2.2",
@@ -25,5 +27,5 @@
   },
   "devDependencies": {
     "nodemon": "^2.0.12"
-}
+  }
 }
