@@ -19,13 +19,13 @@ app.use(
 );
 
 app.get("/events", async (req, res) => {
-    res.status(200).json({ items: "hello www" });
+    const events = await Events.find();
+    res.status(200).json({ events });
 });
 
 
 // use the req payload to reset db
 app.post("/reset/naboo/events", async (req, res) => {
-
     // delete events
     await Events.deleteMany({});
 
