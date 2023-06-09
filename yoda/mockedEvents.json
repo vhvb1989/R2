@@ -1,0 +1,32 @@
+[
+    {
+        "title": "1:1 with Samer",
+        "date": "2023-06-10T14:48:00",
+        "description": "montly meeting. Currently planning goals for next milestone",
+        "source": "work"
+    },
+    {
+        "title": "focus time",
+        "date": "2023-06-10T14:48:00",
+        "description": "working on openAI hackathon.",
+        "source": "work"
+    },
+    {
+        "title": "Jonathan Birthday",
+        "description": "We will celebrate Jonathan's birthday",
+        "date": "2023-06-17T14:48:00",
+        "source": "personal"
+    },
+    {
+        "title": "Friend Bachelorette",
+        "description": "Friend's Bachelorette Celebration on this day",
+        "date": "2023-08-17T14:48:00",
+        "source": "personal"
+    },
+    {
+        "title": "Demo on Azure SDK",
+        "description": "Give a demo to our customers on how to use Azure SDKs",
+        "date": "2023-07-17T14:48:00",
+        "source": "work"
+    }
+]
