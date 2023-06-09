@@ -1,0 +1,23 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Launch Program",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "program": "${workspaceFolder}/yoda/index.js",
+            "console": "integratedTerminal",
+            "runtimeExecutable": "/mnt/wslg/runtime-dir/fnm_multishells/2721_1686340099988/bin/node",
+            "env": {
+                "AZURE_COSMOS_CONNECTION_STRING_KEY":"AZURE-COSMOS-CONNECTION-STRING",
+                "AZURE_KEY_VAULT_ENDPOINT":"https://kv-5d5ibv73eacuc.vault.azure.net/"
+            }
+        }
+    ]
+}

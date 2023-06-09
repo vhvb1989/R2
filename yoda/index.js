@@ -32,7 +32,7 @@ app.post("/reset/naboo/events", async (req, res) => {
     const requestEvents = req.body
     for (const event of requestEvents) {
         const row = new Events();
-        row._id = mongoose.Types.ObjectId();
+        row._id = new mongoose.Types.ObjectId();
         row.title = event.title;
         row.date = event.date;
         row.description = event.description;
