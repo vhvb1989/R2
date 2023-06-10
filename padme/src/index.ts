@@ -10,7 +10,7 @@ const app = express();
 // You will need to set these environment variables or edit the following values
 const endpoint = process.env["R2_OPENAI_ENDPOINT"] || "<endpoint>";
 const azureApiKey = process.env["R2_AZURE_API_KEY"] || "<api key>";
-const yodaUrl = process.env["R2_YODA_URL"] || "<yoda url>";
+const yodaUrl = process.env["REACT_APP_YODA"] || "<yoda url>";
 
 let listOfEventsWithChat: {
   conversation: ChatMessage[]; title: string; description: string; dateTime:

@@ -85,7 +85,7 @@ module padme './app/padme.bicep' = {
       AZURE_COSMOS_ENDPOINT: cosmos.outputs.endpoint
       R2_OPENAI_ENDPOINT: openAIEndpoint
       R2_AZURE_API_KEY: azureApiKey
-      R2_YODA_URL: yoda.outputs.SERVICE_API_URI
+      REACT_APP_YODA: yoda.outputs.SERVICE_API_URI
     }
   }
 }
