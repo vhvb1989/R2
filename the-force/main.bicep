@@ -42,17 +42,6 @@ module leia './app/leia.bicep' = {
   }
 }
 
-module leiaAppSettings './core/host/appservice-appsettings.bicep' = {
-  name: 'leia-appsettings'
-  scope: rg
-  params: {
-    name: leia.outputs.SERVICE_WEB_NAME
-    appSettings: {
-      REACT_APP_API_BASE_URL: yoda.outputs.SERVICE_API_URI
-    }
-  }
-}
-
 module yoda './app/yoda.bicep' = {
   name: 'yoda'
   scope: rg
@@ -62,6 +51,7 @@ module yoda './app/yoda.bicep' = {
     tags: tags
     appServicePlanId: appServicePlan.outputs.id
     keyVaultName: keyVault.outputs.name
+    allowedOrigins: ['*']
     appSettings: {
       AZURE_COSMOS_CONNECTION_STRING_KEY: cosmos.outputs.connectionStringKey
       AZURE_COSMOS_DATABASE_NAME: cosmos.outputs.databaseName
@@ -79,10 +69,8 @@ module padme './app/padme.bicep' = {
     tags: tags
     appServicePlanId: appServicePlan.outputs.id
     keyVaultName: keyVault.outputs.name
+    allowedOrigins: ['*']
     appSettings: {
-      AZURE_COSMOS_CONNECTION_STRING_KEY: cosmos.outputs.connectionStringKey
-      AZURE_COSMOS_DATABASE_NAME: cosmos.outputs.databaseName
-      AZURE_COSMOS_ENDPOINT: cosmos.outputs.endpoint
       R2_OPENAI_ENDPOINT: openAIEndpoint
       R2_AZURE_API_KEY: azureApiKey
       REACT_APP_YODA: yoda.outputs.SERVICE_API_URI

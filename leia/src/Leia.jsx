@@ -1,15 +1,14 @@
 import './Leia.css';
+import Feed from './Feed'
 
-function App() {
+function Leia() {
   return (
     <div className="App">
       <header className="App-header">
-        <p>
-          This is R2
-        </p>
+        <Feed/>
       </header>
     </div>
   );
 }
 
-export default App;
+export default Leia;

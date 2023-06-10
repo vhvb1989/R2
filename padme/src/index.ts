@@ -32,8 +32,18 @@ app.use(
   }
 );
 
+// Open CORS - for demo purpose only
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Authorization, Origin, X-Requested-With, Content-Type, Accept"
+  );
+  next();
+});
+
 app.get("/", async (req: express.Request, res: express.Response) => {
-  res.send(JSON.stringify({"ping":"ok"}));
+  res.send(JSON.stringify({ "ping": "ok" }));
 });
 
 /**

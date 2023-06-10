@@ -18,14 +18,24 @@ app.use(
     })
 );
 
+// Open CORS - for demo purpose only
+app.use((req, res, next) => {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header(
+        "Access-Control-Allow-Headers",
+        "Authorization, Origin, X-Requested-With, Content-Type, Accept"
+    );
+    next();
+});
+
 app.get("/events", async (req, res) => {
     const events = await Events.find();
     res.status(200).json({ events });
 });
 
-app.post("/feed/:eventId", async (req, res) => {
-    
-    res.status(200).json({ mockedFeed });
+const mockedFeed = require('./mockedFeed.json')
+app.get("/feed", async (req, res) => {
+    res.status(200).json({ feed: mockedFeed });
 });
 
 // use the req payload to reset db
