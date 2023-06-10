@@ -8,17 +8,17 @@ dotenv.config();
 const app = express();
 
 // You will need to set these environment variables or edit the following values
-const endpoint = process.env["ENDPOINT"] || "<endpoint>";
-const azureApiKey = process.env["AZURE_API_KEY"] || "<api key>";
+const endpoint = process.env["R2_OPENAI_ENDPOINT"] || "<endpoint>";
+const azureApiKey = process.env["R2_AZURE_API_KEY"] || "<api key>";
 
 let listOfEventsWithChat: {
-    conversation: ChatMessage[]; title: string; description: string; dateTime:
-        /**
-         * Demonstrates how to get suggestions for the events.
-         *
-         * @summary get completions.
-         */
-        string;
+  conversation: ChatMessage[]; title: string; description: string; dateTime:
+  /**
+   * Demonstrates how to get suggestions for the events.
+   *
+   * @summary get completions.
+   */
+  string;
 }[] = [];
 
 
@@ -34,37 +34,37 @@ app.use(
 );
 
 app.get("/", async (req: express.Request, res: express.Response) => {
-    res.redirect(200,'/generate');
+  res.send(JSON.stringify({"ping":"ok"}));
 });
 /**
  * Home URI
  */
 app.get("/generate", async (req: express.Request, res: express.Response) => {
-    console.log("redirected here");
-    const client = new OpenAIClient(endpoint, new AzureKeyCredential(azureApiKey));
-    const deploymentId = "gpt-4"
-    const eventResponse = await fetch('https://app-yoda-5d5ibv73eacuc.azurewebsites.net/events');
-    const body = await eventResponse.json();
-    if(body){
-        for await (const event of body.events) {
-            // Do something with each "chunk"
-              let eventQs = `I have an event named ${event.title} where ${event.description} on ${event.dateTime}. Provide me ideas to make this event better.`    
-              //Tell me something important that happens on this day.
-              let messages: ChatMessage[] = [
-                  { role: "user", content: eventQs },
-              ]
-          const result = await client.getChatCompletions(deploymentId,messages)
-              for (const choice of result.choices) {
-                  messages.push(choice.message!)
-                }
-                listOfEventsWithChat.push({...event,"conversation":messages})
-                
-          }  
+  console.log("redirected here");
+  const client = new OpenAIClient(endpoint, new AzureKeyCredential(azureApiKey));
+  const deploymentId = "gpt-4"
+  const eventResponse = await fetch('https://app-yoda-5d5ibv73eacuc.azurewebsites.net/events');
+  const body = await eventResponse.json();
+  if (body) {
+    for await (const event of body.events) {
+      // Do something with each "chunk"
+      let eventQs = `I have an event named ${event.title} where ${event.description} on ${event.dateTime}. Provide me ideas to make this event better.`
+      //Tell me something important that happens on this day.
+      let messages: ChatMessage[] = [
+        { role: "user", content: eventQs },
+      ]
+      const result = await client.getChatCompletions(deploymentId, messages)
+      for (const choice of result.choices) {
+        messages.push(choice.message!)
+      }
+      listOfEventsWithChat.push({ ...event, "conversation": messages })
+
     }
-        res.send(JSON.stringify(listOfEventsWithChat));
+  }
+  res.send(JSON.stringify(listOfEventsWithChat));
 });
 
-app.get("/feed",async(req: express.Request, res: express.Response) =>{
+app.get("/feed", async (req: express.Request, res: express.Response) => {
 
 })
 

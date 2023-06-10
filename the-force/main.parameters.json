@@ -13,6 +13,12 @@
     },
     "useAPIM": {
       "value": "${USE_APIM=false}"
+    },
+    "openAIEndpoint": {
+      "value": "${R2_OPENAI_ENDPOINT}"
+    },
+    "azureApiKey": {
+      "value": "${R2_AZURE_API_KEY}"
     }
   }
 }

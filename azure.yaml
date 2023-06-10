@@ -8,6 +8,10 @@ services:
     project: ./yoda
     language: js
     host: appservice
+  padme:
+    project: ./padme
+    language: js
+    host: appservice    
   leia:
     project: ./leia
     language: js

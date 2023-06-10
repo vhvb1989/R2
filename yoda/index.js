@@ -23,6 +23,10 @@ app.get("/events", async (req, res) => {
     res.status(200).json({ events });
 });
 
+app.post("/feed/:eventId", async (req, res) => {
+    
+    res.status(200).json({ mockedFeed });
+});
 
 // use the req payload to reset db
 app.post("/reset/naboo/events", async (req, res) => {

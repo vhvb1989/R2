@@ -9,6 +9,14 @@ param environmentName string
 @description('Primary location for all resources')
 param location string
 
+@minLength(1)
+@description('OpenAI endpoint')
+param openAIEndpoint string
+
+@minLength(1)
+@description('OpenAI endpoint')
+param azureApiKey string
+
 @description('Id of the user or app to assign application roles')
 param principalId string = ''
 
@@ -75,6 +83,8 @@ module padme './app/padme.bicep' = {
       AZURE_COSMOS_CONNECTION_STRING_KEY: cosmos.outputs.connectionStringKey
       AZURE_COSMOS_DATABASE_NAME: cosmos.outputs.databaseName
       AZURE_COSMOS_ENDPOINT: cosmos.outputs.endpoint
+      R2_OPENAI_ENDPOINT: openAIEndpoint
+      R2_AZURE_API_KEY: azureApiKey
     }
   }
 }
