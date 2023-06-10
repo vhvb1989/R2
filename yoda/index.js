@@ -39,6 +39,15 @@ app.get("/feed", async (req, res) => {
 });
 
 // use the req payload to reset db
+app.post("/reset/feed", async (req, res) => {
+    // call padme service
+    // result = padme-url/generate
+
+    // save result in DB
+});
+
+
+// use the req payload to reset db
 app.post("/reset/naboo/events", async (req, res) => {
     // delete events
     await Events.deleteMany({});
