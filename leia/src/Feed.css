@@ -1,0 +1,37 @@
+.feed-box {
+  display: flex;
+  min-width: 10rem;
+  flex-direction: column;
+  margin-bottom: 2rem;
+  max-width: 35rem;
+  padding: .5rem;
+
+}
+
+.top-title {
+  margin-bottom: 3rem;
+}
+
+.badge {
+  display: flex!important;
+  text-align: left;
+  margin: 0!important;
+}
+
+.title {
+  text-align: left;
+  margin-left: 1rem;
+  font-size: small;
+}
+
+.ai-label {
+  text-align: left;
+  margin-left: 1rem;
+  font-size:xx-small;
+}
+
+.ai-box {
+  max-height: 10rem;
+  overflow: scroll;
+  font-size: small;
+}

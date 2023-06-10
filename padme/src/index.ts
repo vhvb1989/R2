@@ -69,6 +69,9 @@ app.get("/generate", async (req: express.Request, res: express.Response) => {
       listOfEventsWithChat.push({ ...event, "conversation": messages })
     }
   }
+
+  // todo - call 
+  // const eventResponse = await POST (yodaUrl + '/create/feed'); -> use paylod = JSON.stringify(listOfEventsWithChat)
   res.send(JSON.stringify(listOfEventsWithChat));
 });
 

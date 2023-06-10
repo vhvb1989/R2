@@ -1,12 +1,40 @@
-import './Leia.css';
 import { useEffect, useState } from "react";
 import { config } from "./config";
 import ReactLoading from "react-loading";
+import './Feed.css';
 
-const FeedTile = ({title}) => {
+import Badge from "react-bootstrap/Badge";
+
+const AiIdea = ({ content }) => {
+  const paragraphs = content.split("\n\n")
   return (
-    <div>
-      {title}
+    paragraphs.map(par =>
+      <p>{par}</p>
+    )
+  )
+}
+
+const FeedTile = ({
+  title,
+  date,
+  source,
+  conversation
+}) => {
+  return (
+    <div className='feed-box'>
+      <div className='badge'>
+        <Badge bg={source==="work"?"primary":"secondary"}>{source}</Badge>
+      </div>
+      <div className="title" >{title} on {new Date(date).toLocaleDateString("en-US", { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}</div>
+      <div className="ai-label" >AI - Generated:</div>
+      {
+        conversation.filter(chat => chat.role === "assistant")
+          .map(aiChat =>
+            <div className="ai-box">
+              <AiIdea {...aiChat}></AiIdea>
+            </div>
+          )
+      }
     </div>
   )
 }
@@ -32,12 +60,12 @@ const Feed = () => {
   return (
     <>
       <h5>
-        <center>R2 Feed</center>
+        <center className="top-title" >R2 Feed</center>
       </h5>
       {data ? (
         data.map(oneFeed => {
           return (
-            <FeedTile {...oneFeed}></FeedTile>
+            <FeedTile {...oneFeed} key={oneFeed._id}></FeedTile>
           )
         })
       ) : (

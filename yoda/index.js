@@ -42,7 +42,7 @@ app.get("/feed", async (req, res) => {
 app.post("/feed", async (req, res) => {
     // get feed from req.feed paylod
 
-    // save feed in DB (check if existing.)
+    // save feed in DB (check )
 });
 
 
