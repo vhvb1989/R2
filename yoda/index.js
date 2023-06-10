@@ -38,12 +38,11 @@ app.get("/feed", async (req, res) => {
     res.status(200).json({ feed: mockedFeed });
 });
 
-// use the req payload to reset db
-app.post("/reset/feed", async (req, res) => {
-    // call padme service
-    // result = padme-url/generate
+// use the req payload to add one entry
+app.post("/feed", async (req, res) => {
+    // get feed from req.feed paylod
 
-    // save result in DB
+    // save feed in DB (check if existing.)
 });
 
 
