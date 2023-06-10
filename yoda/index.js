@@ -6,6 +6,7 @@ const { DefaultAzureCredential } = require("@azure/identity");
 const { SecretClient } = require("@azure/keyvault-secrets");
 
 const { Events } = require("./models/event.js")
+const { Feeds } = require("./models/feed.js");
 
 // ---------------------------------------------------- SET UP ----------------------------------
 const port = process.env.PORT || 5000;
@@ -33,16 +34,29 @@ app.get("/events", async (req, res) => {
     res.status(200).json({ events });
 });
 
-const mockedFeed = require('./mockedFeed.json')
 app.get("/feed", async (req, res) => {
-    res.status(200).json({ feed: mockedFeed });
+    const feeds = await Feeds.find();
+    res.status(200).json({ feeds });
 });
 
 // use the req payload to add one entry
 app.post("/feed", async (req, res) => {
-    // get feed from req.feed paylod
-
+    // get feed from req.feed payload   
+    console.log('receiving data ...');
+    const feed = req.body
+    const row = new Feeds();
+    row._id = new mongoose.Types.ObjectId();
+    row.title = feed.title;
+    row.date = feed.date;
+    row.description = feed.description;
+    row.source = feed.source;
+    row.createdAt = feed.createdAt;
+    row.updatedAt = feed.updatedAt;
+    row._v = feed._v;
+    row.conversation = structuredClone(feed.conversation)
     // save feed in DB (check if existing.)
+    const result = await Feeds.findOneAndUpdate({title:feed.title,date:feed.date,description:feed.description},row,{new:true,upsert:true});    
+    res.status(200).json({ result });
 });
 
 

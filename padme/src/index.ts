@@ -66,9 +66,38 @@ app.get("/generate", async (req: express.Request, res: express.Response) => {
       for (const choice of result.choices) {
         messages.push(choice.message!)
       }
-      listOfEventsWithChat.push({ ...event, "conversation": messages })
+      let eventWithChat = { ...event, "conversation": messages }
+      listOfEventsWithChat.push(eventWithChat)
+      console.log("message received from chat-gpt")
+      const settings = {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json; charset=UTF-8',
+                },
+                body: JSON.stringify(eventWithChat)
+            };
+      try {
+        console.log("preppping msg to db ..");
+        const fetchResponse = await fetch(`${yodaUrl}/feed`, settings);
+        const data = await fetchResponse.json();
+        console.log("message sent to db")
+        console.log(data);
+         
+          if (fetchResponse.ok) {
+            console.log("added to db");
+            //return json data
+            //return fetchResponse
+        } else {
+            //
+            console.log("error while adding to db", fetchResponse.status);
+        }
+        console.log(data);
+      } catch (e) {
+          return e;
+      }
     }
   }
+  console.log("everything completed");
   res.send(JSON.stringify(listOfEventsWithChat));
 });
 
