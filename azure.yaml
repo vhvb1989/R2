@@ -17,3 +17,14 @@ services:
     language: js
     host: appservice
     dist: build
+hooks:
+  postup:
+    windows:
+      interactive: true
+      shell: pwsh
+      run: azd deploy leia
+    posix:
+      interactive: true
+      shell: sh
+      run: azd deploy leia
+  
