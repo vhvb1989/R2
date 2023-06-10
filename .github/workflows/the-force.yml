@@ -42,3 +42,5 @@ jobs:
           AZURE_ENV_NAME: ${{ vars.AZURE_ENV_NAME }}
           AZURE_LOCATION: ${{ vars.AZURE_LOCATION }}
           AZURE_SUBSCRIPTION_ID: ${{ vars.AZURE_SUBSCRIPTION_ID }}
+          R2_AZURE_API_KEY: ${{ secret.R2_AZURE_API_KEY }}
+          R2_OPENAI_ENDPOINT: ${{ vars.R2_OPENAI_ENDPOINT }}
