@@ -57,7 +57,6 @@ app.get("/generate", async (req: express.Request, res: express.Response) => {
   const body = await eventResponse.json();
   if (body) {
     for await (const event of body.events) {
-      // Do something with each "chunk"
       let eventQs = `I have an event named ${event.title} where ${event.description} on ${event.dateTime}. Provide me ideas to make this event better.`
       let messages: ChatMessage[] = [
         { role: "user", content: eventQs },
