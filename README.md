@@ -4,6 +4,9 @@ R2 is a service that pulls events from different sources and use each event as c
 Responses are persisted and displayed from a web app.
 
 Demo wep app: https://app-leia-4vzghxfo4t7t2.azurewebsites.net/
+Demo video:
+
+https://github.com/vhvb1989/R2/assets/24213737/d86b7568-4e20-42d7-82e9-441e87eabba2
 
 Demo notes:
 - A collection of events were used as input for R2 to generate each response displayed within the demo.
